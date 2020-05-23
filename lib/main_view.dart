@@ -3,7 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:sy_travel_animation/utils/PageScrollHolder.dart';
 import 'package:sy_travel_animation/pages/leopard_page.dart';
 import 'package:sy_travel_animation/pages/vulture_page.dart';
+import 'package:sy_travel_animation/widgets/app_bar_widget.dart';
+import 'package:sy_travel_animation/widgets/arrow_icon.dart';
+import 'package:sy_travel_animation/widgets/leopard_page_desc_widget.dart';
 import 'package:sy_travel_animation/widgets/leopard_widget.dart';
+import 'package:sy_travel_animation/widgets/7_2_widget.dart';
+import 'package:sy_travel_animation/widgets/page_indicator.dart';
+import 'package:sy_travel_animation/widgets/share_btn_widget.dart';
 import 'package:sy_travel_animation/widgets/vulture_widget.dart';
 
 class MainView extends StatefulWidget {
@@ -49,7 +55,11 @@ class _MainViewState extends State<MainView>
               ],
             ),
             LeopardWidget(),
-            VultureWidget()
+            VultureWidget(),
+            AppBarWidget(),
+            PageIndicator(),
+            ShareBtnWidget(),
+            ArrowIcon()
           ],
         ),
       ),

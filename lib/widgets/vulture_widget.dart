@@ -13,7 +13,12 @@ class VultureWidget extends StatelessWidget {
     var topGap = (screenHeight - vultureTransformedHeight) / 2;
     var rightGap = (screenWidth - vultureTransformedWidth)/ 2;
 
-    var gap = 60.0;
+    /*
+    * Pour le déplacement du vautour
+    * on suit l'équation de droite suivante y = (a(x) + b) + g
+    * où y est la position du vautour et x la position de la page et g le décalage
+    */
+    var gap = vultureDecalage * screenWidth;
 
     return Consumer<PageScrollHolder>(
       builder: (ctx, holder, child) {

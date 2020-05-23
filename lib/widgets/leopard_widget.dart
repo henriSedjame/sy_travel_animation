@@ -17,8 +17,9 @@ class LeopardWidget extends StatelessWidget {
           var page = holder.currentPage;
           return Positioned(
               top: topGap,
-              left: -screenWidth * (0.85 * page),
-              height: leopardImageHeight,
+              left: -screenWidth * leopardDecalage * page,
+              //height: leopardImageHeight,
+              width: screenWidth * (1/leopardRatio),
               child: child);
         },
 
