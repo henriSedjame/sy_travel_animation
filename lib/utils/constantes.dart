@@ -36,4 +36,4 @@ const leopardImageHeight = leopardTransformedwidth * leopardOriginalHeight/leopa
 double screenHeight(BuildContext ctx) => MediaQuery.of(ctx).size.height;
 double b72TopGap(BuildContext ctx) => (screenHeight(ctx) - leopardImageHeight) / 2 - 125;
 double b72Height(BuildContext ctx) => (screenHeight(ctx)/ 2.2);
-double descTopGap(BuildContext ctx) => b72TopGap(ctx) + b72Height(ctx);
+double descTopGap(BuildContext ctx) => b72TopGap(ctx) + b72Height(ctx) + 50;

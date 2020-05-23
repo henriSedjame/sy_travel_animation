@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sy_travel_animation/utils/PageScrollHolder.dart';
 import 'package:sy_travel_animation/utils/constantes.dart';
 
-class b72Widget extends StatelessWidget {
+class B72Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -14,7 +14,7 @@ class b72Widget extends StatelessWidget {
 
     return Consumer<PageScrollHolder>(
       builder: (_, holder, child) {
-        var page = holder.currentPage;
+        var page = holder.currentPage ?? 0.0;
 
         return Positioned(
           top: b72TopGap(context),

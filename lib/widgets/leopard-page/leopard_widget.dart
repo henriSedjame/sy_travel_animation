@@ -14,7 +14,7 @@ class LeopardWidget extends StatelessWidget {
 
     return Consumer<PageScrollHolder>(
         builder: (BuildContext context, holder, Widget child) {
-          var page = holder.currentPage;
+          var page = holder.currentPage ?? 0.0;
           return Positioned(
               top: topGap,
               left: -screenWidth * leopardDecalage * page,

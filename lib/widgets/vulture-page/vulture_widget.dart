@@ -22,7 +22,7 @@ class VultureWidget extends StatelessWidget {
 
     return Consumer<PageScrollHolder>(
       builder: (ctx, holder, child) {
-        var page = holder.currentPage;
+        var page = holder.currentPage ?? 0.0;
 
         return Positioned(
             top: topGap,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sy_travel_animation/widgets/menu_icon.dart';
+import 'package:sy_travel_animation/widgets/common/menu_icon.dart';
 
 class AppBarWidget extends StatelessWidget {
   @override

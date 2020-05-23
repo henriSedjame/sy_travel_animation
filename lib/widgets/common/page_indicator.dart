@@ -12,7 +12,7 @@ class PageIndicator extends StatelessWidget {
     return Consumer<PageScrollHolder>(
       builder: (_, holder, child) {
 
-        var page = holder.currentPage.round();
+        var page = holder.currentPage?.round();
         var firstPage = page == 0;
         var color1 = firstPage ? white : Colors.transparent;
         var color2 = !firstPage ? white : Colors.transparent;
@@ -36,8 +36,9 @@ class Round extends StatelessWidget {
 
   final double size;
   final Color color;
+  final bool border;
 
-  Round({this.size, this.color});
+  Round({this.size, this.color, this.border = true});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class Round extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,
-        border: Border.all(color: white, width: 1.0)
+        border: Border.all(color: border ? white: Colors.transparent, width: border? 1.0 : 0.0)
       ),
     );
   }

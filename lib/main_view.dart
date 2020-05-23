@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sy_travel_animation/utils/PageScrollHolder.dart';
 import 'package:sy_travel_animation/pages/leopard_page.dart';
 import 'package:sy_travel_animation/pages/vulture_page.dart';
-import 'package:sy_travel_animation/widgets/app_bar_widget.dart';
-import 'package:sy_travel_animation/widgets/arrow_icon.dart';
-import 'package:sy_travel_animation/widgets/leopard_page_desc_widget.dart';
-import 'package:sy_travel_animation/widgets/leopard_widget.dart';
-import 'package:sy_travel_animation/widgets/7_2_widget.dart';
-import 'package:sy_travel_animation/widgets/page_indicator.dart';
-import 'package:sy_travel_animation/widgets/share_btn_widget.dart';
-import 'package:sy_travel_animation/widgets/vulture_widget.dart';
+import 'package:sy_travel_animation/utils/PageScrollHolder.dart';
+import 'package:sy_travel_animation/widgets/common/app_bar_widget.dart';
+import 'package:sy_travel_animation/widgets/common/arrow_icon.dart';
+import 'package:sy_travel_animation/widgets/common/on_map_btn.dart';
+import 'package:sy_travel_animation/widgets/common/page_indicator.dart';
+import 'package:sy_travel_animation/widgets/common/share_btn_widget.dart';
+import 'package:sy_travel_animation/widgets/leopard-page/leopard_widget.dart';
+import 'package:sy_travel_animation/widgets/vulture-page/base_camp_label.dart';
+import 'package:sy_travel_animation/widgets/vulture-page/dots.dart';
+import 'package:sy_travel_animation/widgets/vulture-page/vulture_page_desc_widget.dart';
+import 'package:sy_travel_animation/widgets/vulture-page/vulture_widget.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -21,14 +23,14 @@ class _MainViewState extends State<MainView>
     with SingleTickerProviderStateMixin {
 
   PageController _pageController;
-
+  PageScrollHolder _pageScrollHolder;
   AnimationController _animationController;
 
   @override
   void initState() {
     _animationController = AnimationController(vsync: this);
     _pageController = PageController();
-
+    _pageScrollHolder = PageScrollHolder(_pageController);
     super.initState();
   }
 
@@ -43,9 +45,17 @@ class _MainViewState extends State<MainView>
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChangeNotifierProvider.value(
-        value: PageScrollHolder(_pageController),
+        value: _pageScrollHolder,
         child: Stack(
           children: <Widget>[
+
+            AppBarWidget(),
+            PageIndicator(),
+            ShareBtnWidget(),
+            ArrowIcon(),
+            OnMapBtn(
+              onPressed: (){},
+            ),
             PageView(
               controller: _pageController,
               physics: ClampingScrollPhysics(),
@@ -56,10 +66,10 @@ class _MainViewState extends State<MainView>
             ),
             LeopardWidget(),
             VultureWidget(),
-            AppBarWidget(),
-            PageIndicator(),
-            ShareBtnWidget(),
-            ArrowIcon()
+            VulturePageDescWidget(),
+            BaseCampLabel(),
+            Dots()
+
           ],
         ),
       ),
