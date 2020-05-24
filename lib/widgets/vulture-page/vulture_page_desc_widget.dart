@@ -12,12 +12,12 @@ class VulturePageDescWidget extends StatelessWidget {
     var decalageFin = screenWidth;
     const decalageDebut = 30.0;
 
-    return Consumer<PageScrollHolder>(
-      builder: (_, holder, child) {
+    return Consumer2<PageScrollHolder, AnimationController>(
+      builder: (_, holder, animation, child) {
         var page = holder.currentPage ?? 0.0;
-
+        var animVal = animation.value;
         return Positioned(
-          top: descTopGap(context),
+          top: (1-animVal)*(descTopGap(context) - b72TopGap(context)) + b72TopGap(context),
           left: (decalageFin - decalageDebut) * 2 * (1 - page) + decalageDebut,
           child: Opacity(
             opacity: math.max(0, (10*page - 9)),

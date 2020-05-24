@@ -13,9 +13,11 @@ class Dots extends StatelessWidget {
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
 
-    return Consumer<PageScrollHolder>(builder: (_, holder, child) {
+    return Consumer2<PageScrollHolder, AnimationController>(
+        builder: (_, holder, animation, child) {
       var page = holder.currentPage ?? 0.0;
-      var opacity = math.max(0.0, (100.0*page - 99.0));
+      var animVal = animation.value;
+      var opacity = math.max(0,1- 200*animVal) * math.max(0.0, (100.0*page - 99.0));
       var opacity2 = math.max(0.0, (20.0*page - 19.0));
       return Positioned(
         top: descTopGap(context) + 75,
