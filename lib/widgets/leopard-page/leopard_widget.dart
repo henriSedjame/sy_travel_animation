@@ -12,7 +12,7 @@ class LeopardWidget extends StatelessWidget {
     var screenWidth = screenSize.width;
     var topGap=  (screenHeight - leopardImageHeight)/2;
 
-    return Consumer2<PageScrollHolder, AnimationController>(
+    return Consumer2<PageScrollHolder, Animation>(
         builder: (_, holder, animation, child) {
           var page = holder.currentPage ?? 0.0;
           var animVal = animation.value;

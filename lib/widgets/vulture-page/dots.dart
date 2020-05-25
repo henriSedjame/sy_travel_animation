@@ -13,42 +13,74 @@ class Dots extends StatelessWidget {
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
 
-    return Consumer2<PageScrollHolder, AnimationController>(
-        builder: (_, holder, animation, child) {
+    return Consumer3<PageScrollHolder, Animation, AnimationController>(
+        builder: (_, holder, animation, mapCtrl,child) {
       var page = holder.currentPage ?? 0.0;
       var animVal = animation.value;
-      var opacity = math.max(0,1- 200*animVal) * math.max(0.0, (100.0*page - 99.0));
-      var opacity2 = math.max(0.0, (20.0*page - 19.0));
+      var speed =
+          math.max(0, 1 - 200 * animVal) * math.max(0.0, (100.0 * page - 99.0));
+      var opacity = math.max(0.0, (20.0 * page - 19.0));
+      var contentHeight = animVal *
+          (screenHeight -
+              ((screenHeight - descTopGap(context)) + b72TopGap(context)));
+
+      var mapValue = mapCtrl.value;
       return Positioned(
-        top: descTopGap(context) + 75,
-        left: 0,
-        right: 0,
-        child: Opacity(
-          opacity: opacity2,
-          child: Center(
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(right: opacity * 45.0),
-                  child: Round(size: 6, color: Colors.transparent,),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: opacity * 15.0),
-                  child: Round(size: 3, color: Colors.grey,),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: opacity * 15.0),
-                  child: Round(size: 3, color: Colors.grey,),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: opacity * 45.0),
-                  child: Round(size: 6, color: white,),
-                ),
-              ],
+          bottom: screenHeight - (descTopGap(context) + 75) - 8,
+          left: 0,
+          right: 0,
+          child: Opacity(
+            opacity: opacity,
+            child: Container(
+              height: contentHeight + 16,
+              width: double.infinity,
+              child: Stack(
+                overflow: Overflow.visible,
+                alignment: Alignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        right: speed * 45.0 + (0.8 * mapValue * screenWidth/3),
+                        top: contentHeight),
+                    child: Round(
+                      size: 8,
+                      color: mainBlack,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: speed * 15.0,),
+                    child: Opacity(
+                      opacity: speed,
+                      child: Round(
+                        size: 5,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: speed * 15.0,),
+                    child: Opacity(
+                      opacity: speed,
+                      child: Round(
+                        size: 5,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: speed * 45.0 + (0.3 * mapValue * screenWidth/4),
+                        bottom: (1 - speed) * contentHeight,
+                        top: speed * contentHeight),
+                    child: Round(
+                      size: 8,
+                      color: white,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ));
+          ));
     });
   }
 }

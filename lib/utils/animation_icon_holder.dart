@@ -4,19 +4,33 @@ import 'package:flutter/foundation.dart';
 
 class AnimationIconHolder extends ChangeNotifier {
 
-  String _animationName;
+  String _arrowAnimationName;
+  String _menuAnimationName;
 
   AnimationIconHolder();
 
-  String get animationName => _animationName;
+  String get arrowAnimationName => _arrowAnimationName;
+  String get menuAnimationName => _menuAnimationName;
 
-  void anim(ArrowAnims name) {
+  void animArrow(ArrowAnims name) {
     switch (name) {
       case ArrowAnims.UP_TO_DOWN:
-        _animationName = 'upToDown';
+        _arrowAnimationName = 'upToDown';
         break;
       case ArrowAnims.DOWN_TO_UP:
-        _animationName = 'downToUp';
+        _arrowAnimationName = 'downToUp';
+        break;
+    }
+    notifyListeners();
+  }
+
+  void animMenu(MenuAnims name){
+    switch(name){
+      case MenuAnims.BACK_TO_MENU:
+        _menuAnimationName = 'backtoMenu';
+        break;
+      case MenuAnims.MENU_TO_BACK:
+        _menuAnimationName = 'menuToBack';
         break;
     }
     notifyListeners();
@@ -26,4 +40,9 @@ class AnimationIconHolder extends ChangeNotifier {
 enum ArrowAnims {
   UP_TO_DOWN,
   DOWN_TO_UP
+}
+
+enum MenuAnims {
+  MENU_TO_BACK,
+  BACK_TO_MENU
 }

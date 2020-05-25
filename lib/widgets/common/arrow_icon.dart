@@ -8,7 +8,7 @@ import 'package:sy_travel_animation/utils/constantes.dart';
 class ArrowIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer2<AnimationController, AnimationIconHolder>(
+    return Consumer2<Animation, AnimationIconHolder>(
       builder: (_, animation, iconHolder, child) {
         var animVal = animation.value;
         return Positioned(
@@ -18,7 +18,7 @@ class ArrowIcon extends StatelessWidget {
             width: 25,
             height: 25,
             child: FlareActor('assets/flare/Arrow-up-down.flr',
-              animation: iconHolder.animationName,
+              animation: iconHolder.arrowAnimationName,
             ),
           ),
         );

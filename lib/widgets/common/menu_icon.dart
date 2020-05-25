@@ -1,26 +1,22 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:sy_travel_animation/utils/constantes.dart';
+import 'package:provider/provider.dart';
+import 'package:sy_travel_animation/utils/animation_icon_holder.dart';
 
 class MenuIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 10,
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: 18,
-            height: 2,
-            color: white,
-          ),
-          SizedBox(height: 4,),
-          Container(
-            width: 18,
-            height: 2,
-            color: white,
-          )
-        ],
-      ),
+    return Consumer<AnimationIconHolder>(
+      builder: (_, holder, child) {
+
+        return SizedBox(
+          width: 30,
+          height: 15,
+          child: FlareActor(
+            'assets/flare/Menu-Back.flr',
+            animation: holder.menuAnimationName,
+          ));
+      },
     );
   }
 }

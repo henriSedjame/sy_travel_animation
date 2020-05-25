@@ -36,9 +36,10 @@ class Round extends StatelessWidget {
 
   final double size;
   final Color color;
+  final double bordersize;
   final bool border;
 
-  Round({this.size, this.color, this.border = true});
+  Round({this.size, this.color, this.border = true, this.bordersize = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class Round extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,
-        border: Border.all(color: border ? white: Colors.transparent, width: border? 1.0 : 0.0)
+        border: Border.all(color: border ? white: Colors.transparent, width: bordersize)
       ),
     );
   }

@@ -19,7 +19,7 @@ class VultureWidget extends StatelessWidget {
     */
     var gap = vultureDecalage * screenWidth;
 
-    return Consumer2<PageScrollHolder, AnimationController>(
+    return Consumer2<PageScrollHolder, Animation>(
       builder: (ctx, holder, animation, child) {
         var page = holder.currentPage ?? 0.0;
         var animVal = animation.value;

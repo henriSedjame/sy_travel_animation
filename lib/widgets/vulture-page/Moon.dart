@@ -13,11 +13,11 @@ class Moon extends StatelessWidget {
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
 
-    return Consumer2<PageScrollHolder, AnimationController>(
+    return Consumer2<PageScrollHolder, Animation>(
     builder: (_, holder, animation, child) {
       var page = holder.currentPage ?? 0.0;
       var animVal = animation.value;
-      var opacity = math.max(0.0, (20.0*page - 19.0));
+      var opacity = math.max(0,(1-10*animVal)) * math.max(0.0, (20.0*page - 19.0));
 
       var ratio =  (250/(1-(animVal + 0.1)));
 
